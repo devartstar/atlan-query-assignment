@@ -3,6 +3,7 @@ import Home from "/src/components/views/Home.vue";
 import Query from "/src/components/views/Query.vue";
 import Result from "/src/components/views/Result.vue";
 import Editor from "/src/components/views/Editor.vue";
+import Datatable from "/src/components/views/Datatable.vue";
 
 const routes = [
   {
@@ -14,6 +15,11 @@ const routes = [
     path: "/query",
     names: "Query",
     component: Query,
+  },
+  {
+    path: "/datatable",
+    names: "Datatable",
+    component: Datatable,
   },
   {
     path: "/editor",
