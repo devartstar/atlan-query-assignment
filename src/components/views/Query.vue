@@ -21,5 +21,7 @@ const queryList = useQueryStore().query;
 <style scoped>
 .query-list {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 </style>
