@@ -26,6 +26,7 @@ const routes = [
         path: ":tableindex",
         names: "Datatable",
         component: TableModal,
+        props: true,
       },
     ],
   },
