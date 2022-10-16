@@ -3,7 +3,8 @@ import Home from "/src/components/views/Home.vue";
 import Query from "/src/components/views/Query.vue";
 import Result from "/src/components/views/Result.vue";
 import Editor from "/src/components/views/Editor.vue";
-import Datatable from "/src/components/views/Datatable.vue";
+import Datatable from "/src/components/views/DataTables/Datatable.vue";
+import TableModal from "../components/views/DataTables/TableModal.vue";
 
 const routes = [
   {
@@ -18,8 +19,15 @@ const routes = [
   },
   {
     path: "/datatable",
-    names: "Datatable",
+    names: "DatatableList",
     component: Datatable,
+    children: [
+      {
+        path: ":tableindex",
+        names: "Datatable",
+        component: TableModal,
+      },
+    ],
   },
   {
     path: "/editor",
