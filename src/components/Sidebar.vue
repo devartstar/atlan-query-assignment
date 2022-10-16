@@ -52,7 +52,7 @@
                   class="w-5 h-5"
                 />
               </span>
-              <span class="text-xl"><Icon :icon="option.icon" /></span>
+              <span class="text-xl relative"><Icon :icon="option.icon" /></span>
               <span class="relative ml-10 hideEle">{{ option.name }}</span>
             </div>
           </router-link>
@@ -73,7 +73,7 @@ const optionList = [
     linkto: "/",
   },
   {
-    name: "Datas",
+    name: "Data",
     icon: "ant-design:database-filled",
     linkto: "/datatable",
   },
@@ -88,7 +88,7 @@ const optionList = [
     linkto: "/editor",
   },
   {
-    name: "Results",
+    name: "Result",
     icon: "fluent:document-table-search-20-filled",
     linkto: "/result",
   },
