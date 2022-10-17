@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "/src/components/views/Home.vue";
-import Query from "/src/components/views/Query.vue";
+import Query from "../components/views/QueryPage/Query.vue";
+import QueryModal from "../components/views/QueryPage/QueryModal.vue";
 import Result from "/src/components/views/Result.vue";
 import Editor from "/src/components/views/Editor.vue";
 import Datatable from "/src/components/views/DataTables/Datatable.vue";
@@ -16,6 +17,14 @@ const routes = [
     path: "/query",
     names: "Query",
     component: Query,
+    children: [
+      {
+        path: ":tableindex",
+        names: "Query Lists",
+        component: QueryModal,
+        props: true,
+      },
+    ],
   },
   {
     path: "/datatable",

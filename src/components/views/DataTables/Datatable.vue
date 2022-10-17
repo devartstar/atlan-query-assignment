@@ -5,6 +5,9 @@
         v-for="(datatable, index) in datatableList"
         :key="index"
         class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4"
+        :class="
+          index === selectedDatasetIndex ? `border-2 border-indigo-600` : ``
+        "
       >
         <router-link :to="`/datatable/${index}`">
           <div
@@ -12,7 +15,7 @@
           >
             <img
               :src="datatable.image"
-              alt=" random imgee"
+              alt="Dataset Image"
               class="w-full h-96 object-cover object-center rounded-lg shadow-md"
             />
           </div>
@@ -41,5 +44,7 @@
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
-const { datatableList } = storeToRefs(dataStore);
+const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+console.log(selectedDatasetIndex.value);
+// not updating with new selected index - force re-render component
 </script>
