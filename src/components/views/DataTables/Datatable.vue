@@ -1,6 +1,4 @@
 <template>
-  <div class="flex flex-wrap -mx-4"></div>
-
   <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4">
       <div
