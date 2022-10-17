@@ -111,11 +111,15 @@ function sidebarUpdate(index) {
   [...sidebarOptions].forEach(function (ele, ind) {
     console.log(ele);
     if (ind == index) {
-      ele.style.background = "#4f46e5";
-      ele.style.color = "white";
+      if (!ele.classList.contains("bg-indigo-600")) {
+        ele.classList.add("bg-indigo-600");
+      }
+      if (!ele.classList.contains("text-white")) {
+        ele.classList.add("text-white");
+      }
     } else {
-      ele.style.background = "transparent";
-      ele.style.color = "#4f46e5";
+      ele.classList.remove("bg-indigo-600");
+      ele.classList.remove("text-white");
     }
   });
 }
