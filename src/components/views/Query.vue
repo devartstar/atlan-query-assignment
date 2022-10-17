@@ -13,9 +13,10 @@
 </template>
 
 <script setup lang="ts">
-import { useQueryStore } from "../../stores/QueryStore";
-
-const queryList = useQueryStore().query;
+import { storeToRefs } from "pinia";
+import { QueryStore } from "../../stores/QueryStore/QueryStore";
+const queryStore = QueryStore();
+const { queryList } = storeToRefs(queryStore);
 </script>
 
 <style scoped>

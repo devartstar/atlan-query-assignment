@@ -38,32 +38,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import ordersData from "../../../assets/orders_data.jpg";
-import productData from "../../../assets/productData.webp";
-import customerData from "../../../assets/customerData.png";
-
-const datatableList = [
-  {
-    image: ordersData,
-    linkto: "/datatable/orderstable",
-    title: "Orders Data Table",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. Blandit libero volutpat sed cras ornare. Fermentum dui faucibus in ornare quam. Aenean et tortor at risus viverra.",
-  },
-  {
-    image: productData,
-    linkto: "/datatable/productstable",
-    title: "Products Data Table",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. Blandit libero volutpat sed cras ornare. Fermentum dui faucibus in ornare quam. Aenean et tortor at risus viverra.",
-  },
-  {
-    image: customerData,
-    linkto: "/datatable/customerstable",
-    title: "Customers Data Table",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. Blandit libero volutpat sed cras ornare. Fermentum dui faucibus in ornare quam. Aenean et tortor at risus viverra.",
-  },
-];
+import { storeToRefs } from "pinia";
+import { DataStore } from "../../../stores/DataStore/DataStore";
+const dataStore = DataStore();
+const { datatableList } = storeToRefs(dataStore);
 </script>
