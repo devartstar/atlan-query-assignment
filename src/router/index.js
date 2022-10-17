@@ -6,6 +6,7 @@ import Result from "/src/components/views/Result.vue";
 import Editor from "/src/components/views/Editor.vue";
 import Datatable from "/src/components/views/DataTables/Datatable.vue";
 import TableModal from "../components/views/DataTables/TableModal.vue";
+import ImportModal from "../components/views/DataTables/ImportModal.vue";
 
 const routes = [
   {
@@ -38,6 +39,12 @@ const routes = [
         props: true,
       },
     ],
+  },
+  {
+    path: "/datatable/import",
+    names: "Import File",
+    component: ImportModal,
+    props: true,
   },
   {
     path: "/editor",

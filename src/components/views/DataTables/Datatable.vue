@@ -37,6 +37,12 @@
       </div>
     </div>
   </div>
+  <router-link to="/datatable/import">
+    <div class="flex flex-col justify-center items-center mt-10">
+      <Button buttonText="Import CSV" />
+    </div>
+  </router-link>
+
   <router-view></router-view>
 </template>
 
@@ -47,4 +53,6 @@ const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 console.log(selectedDatasetIndex.value);
 // not updating with new selected index - force re-render component
+
+import Button from "../../Utils/Button.vue";
 </script>
