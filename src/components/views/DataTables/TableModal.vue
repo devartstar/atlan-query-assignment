@@ -17,6 +17,7 @@
             <router-link :to="`/query/${tableindex}`">
               <button
                 class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-md hover:shadow-lg hover:bg-gray-100"
+                @click="sidebarUpdate(2)"
               >
                 SELECT
               </button>
@@ -39,16 +40,16 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
+import { sidebarUpdate } from "../../../composables/Sidebar";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-
 const props = defineProps({
   tableindex: {
     type: Number,
     required: true,
   },
 });
-console.log(props.tableindex);
+// console.log(props.tableindex);
 selectedDatasetIndex.value = props.tableindex;
 </script>
 

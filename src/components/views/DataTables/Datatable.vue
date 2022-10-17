@@ -51,8 +51,9 @@ import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-console.log(selectedDatasetIndex.value);
+// console.log(selectedDatasetIndex.value);
 // not updating with new selected index - force re-render component
 
 import Button from "../../Utils/Button.vue";
+import { sidebarUpdate } from "../../../composables/Sidebar";
 </script>

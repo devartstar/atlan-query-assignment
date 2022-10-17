@@ -1,4 +1,7 @@
-<template>
+import { onMounted } from "vue"; import { onMounted } from "vue"; import {
+onMounted } from "vue"; import { onMounted } from "vue";
+
+<!-- <template>
   <div class="m-20">
     <div class="md:grid md:grid-cols-2 md:gap-6">
       <div class="mt-5 md:col-span-2 md:mt-0">
@@ -54,15 +57,16 @@
                       />
                       <div class="flex text-sm text-gray-600">
                         <label
-                          for="file-upload"
+                          for="csvupload"
                           class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
                           <span>Upload a file</span>
                           <input
-                            id="file-upload"
-                            name="file-upload"
+                            id="csvupload"
+                            name="csvupload"
                             type="file"
                             class="sr-only"
+                            target=".csv"
                           />
                         </label>
                         <p class="pl-1">or drag and drop</p>
@@ -85,13 +89,13 @@
                       />
                       <div class="flex text-sm text-gray-600">
                         <label
-                          for="file-upload"
+                          for="picupload"
                           class="relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500"
                         >
                           <span>Upload a file</span>
                           <input
-                            id="file-upload"
-                            name="file-upload"
+                            id="picupload"
+                            name="picupload"
                             type="file"
                             class="sr-only"
                           />
@@ -108,7 +112,7 @@
             </div>
             <router-link to="/datatable">
               <div class="bg-gray-50 px-4 py-5 text-right sm:px-6">
-                <Button buttonText="Add Database" />
+                <Button buttonText="Add Database" @click="updateTableList" />
               </div>
             </router-link>
           </div>
@@ -121,6 +125,7 @@
 <script setup lang="ts">
 import { ref } from "@vue/reactivity";
 import { storeToRefs } from "pinia";
+import { onMounted } from "vue";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import Button from "../../Utils/Button.vue";
 const dataStore = DataStore();
@@ -130,9 +135,44 @@ const myinput = ref("");
 function updateTableList() {
   // add another item to the tables store
   // reditrect to /tabledata/{new tableindex}
+  const uploadfile = document.getElementById("uploadfile");
+  Papa.parse(uploadfile.files[0], {
+    download: true,
+    header: true,
+    skipEmptyLines: true,
+    complete: function (results) {
+      console.log(results);
+    },
+  });
 }
 
 console.log("Hello");
 </script>
 
-<style scoped></style>
+<style scoped></style> -->
+
+<template>
+  <div>
+    <input type="file" id="uploadfile" accept=".csv" />
+    <button id="uploadconfirm">Upload File</button>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { onMounted } from "vue";
+
+onMounted(() => {
+  const uploadconfirm = document
+    .getElementById("uploadconfirm")
+    .addEventListener("click", () => {
+      Papa.parse(document.getElementById("uploadfile").files[0], {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) {
+          console.log(results);
+        },
+      });
+    });
+});
+</script>
