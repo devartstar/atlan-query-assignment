@@ -12,6 +12,7 @@
           <h2
             class="text-2xl font-normal text-gray-800 dark:text-gray-500"
             translate="no"
+            @click="sidebarUpdate(0)"
           >
             <img
               src="../assets/logo.png"
@@ -66,6 +67,7 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
 import { onMounted } from "vue";
+import { sidebarToggle, sidebarUpdate } from "../composables/Sidebar";
 
 const optionList = [
   {
@@ -100,8 +102,6 @@ onMounted(() => {
   const sidebarEle = document.querySelector(".flex-sidebar");
   initResizerFn(resizerEle, sidebarEle);
 });
-
-import { sidebarToggle, sidebarUpdate } from "../composables/Sidebar";
 
 function initResizerFn(resizer, sidebar) {
   // track current mouse position in x var
