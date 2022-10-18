@@ -173,7 +173,4 @@ function initResizerFn(resizer, sidebar) {
   height: 100%;
   position: absolute;
 }
-.active {
-  background-color: black;
-}
 </style>
