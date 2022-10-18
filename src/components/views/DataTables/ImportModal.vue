@@ -1,7 +1,4 @@
-import { onMounted } from "vue"; import { onMounted } from "vue"; import {
-onMounted } from "vue"; import { onMounted } from "vue";
-
-<!-- <template>
+<template>
   <div class="m-20">
     <div class="md:grid md:grid-cols-2 md:gap-6">
       <div class="mt-5 md:col-span-2 md:mt-0">
@@ -11,14 +8,15 @@ onMounted } from "vue"; import { onMounted } from "vue";
               <div class="grid grid-cols-3 gap-6">
                 <div class="col-span-3 sm:col-span-2">
                   <label
-                    for="company-website"
+                    for="tablename"
                     class="block text-md font-medium text-gray-700"
                     >Table Name</label
                   >
                   <input
                     type="text"
-                    name="company-website"
-                    id="company-website"
+                    name="tablename"
+                    v-model="inptableObj.title"
+                    id="tablename"
                     class="block w-full p-1 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="... Table"
                   />
@@ -27,14 +25,15 @@ onMounted } from "vue"; import { onMounted } from "vue";
 
               <div>
                 <label
-                  for="about"
+                  for="tabledesc"
                   class="block text-md font-medium text-gray-700"
                   >Table Description</label
                 >
                 <div class="mt-1">
                   <textarea
-                    id="about"
-                    name="about"
+                    id="tabledesc"
+                    v-model="inptableObj.description"
+                    name="tabledesc"
                     rows="6"
                     class="mt-1 p-5 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="This Table stores the data for ..."
@@ -121,7 +120,6 @@ onMounted } from "vue"; import { onMounted } from "vue";
     </div>
   </div>
 </template>
-
 <script setup lang="ts">
 import { ref } from "@vue/reactivity";
 import { storeToRefs } from "pinia";
@@ -130,49 +128,35 @@ import { DataStore } from "../../../stores/DataStore/DataStore";
 import Button from "../../Utils/Button.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-const myinput = ref("");
+const inptableObj = ref(() => {});
+inptableObj.value = {
+  image: "",
+  title: "",
+  description: "",
+  jsondata: [{}],
+};
 
 function updateTableList() {
   // add another item to the tables store
   // reditrect to /tabledata/{new tableindex}
-  const uploadfile = document.getElementById("uploadfile");
+  const uploadfile = document.getElementById("csvupload");
   Papa.parse(uploadfile.files[0], {
     download: true,
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
-      console.log(results);
+      console.log(results.data);
+      inptableObj.value.jsondata = results.data;
     },
   });
+
+  console.log(inptableObj.value);
+  console.log(datatableList.value);
+  datatableList.value.push(inptableObj.value);
+  console.log(datatableList.value);
 }
 
 console.log("Hello");
 </script>
 
-<style scoped></style> -->
-
-<template>
-  <div>
-    <input type="file" id="uploadfile" accept=".csv" />
-    <button id="uploadconfirm">Upload File</button>
-  </div>
-</template>
-
-<script setup lang="ts">
-import { onMounted } from "vue";
-
-onMounted(() => {
-  const uploadconfirm = document
-    .getElementById("uploadconfirm")
-    .addEventListener("click", () => {
-      Papa.parse(document.getElementById("uploadfile").files[0], {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        complete: function (results) {
-          console.log(results);
-        },
-      });
-    });
-});
-</script>
+<style scoped></style>
