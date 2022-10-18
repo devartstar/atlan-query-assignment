@@ -11,7 +11,7 @@
       >
         <router-link :to="`/datatable/${index}`">
           <div
-            class="hover:background-black z-50 transition duration-150 ease-out"
+            class="hover:background-black z-50 transition duration-150 ease-out m"
           >
             <img
               :src="datatable.image == '' ? uploadDatabase : datatable.image"
