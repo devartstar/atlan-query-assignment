@@ -1,6 +1,11 @@
 export const states = {
   queryList: [
     {
+      name: "SELECT",
+      defn: "sql where usecase",
+      options: ["IN", "BETWEEN", "LIKE"],
+    },
+    {
       name: "WHERE",
       defn: "sql where usecase",
       options: ["IN", "BETWEEN", "LIKE"],
@@ -27,3 +32,9 @@ export const states = {
     },
   ],
 };
+
+/*
+SELECT 
+  -> Select columns dropdown (generate the array and fill the dropdown element)
+
+*/
