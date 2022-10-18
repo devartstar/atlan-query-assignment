@@ -1,6 +1,7 @@
 import ordersData from "../../assets/orders_data.jpg";
 import productData from "../../assets/productData.webp";
 import customerData from "../../assets/customerData.png";
+import uploadedData from "../../assets/uploadedData.png";
 
 export const states = {
   datatableList: [
@@ -8,7 +9,7 @@ export const states = {
       image: ordersData,
       title: "Orders Data Table",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. Blandit libero volutpat sed cras ornare. Fermentum dui faucibus in ornare quam. Aenean et tortor at risus viverra.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. ",
       jsondata: [
         {
           order_id: "1",
@@ -110,7 +111,7 @@ export const states = {
       image: productData,
       title: "Products Data Table",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. Blandit libero volutpat sed cras ornare. Fermentum dui faucibus in ornare quam. Aenean et tortor at risus viverra.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. ",
       jsondata: [
         {
           product_id: "1",
@@ -178,7 +179,7 @@ export const states = {
       image: customerData,
       title: "Customers Data Table",
       description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. Blandit libero volutpat sed cras ornare. Fermentum dui faucibus in ornare quam. Aenean et tortor at risus viverra.",
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae nunc sed velit dignissim. ",
       jsondata: [
         {
           customer_id: "1",

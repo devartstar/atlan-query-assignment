@@ -14,7 +14,7 @@
             class="hover:background-black z-50 transition duration-150 ease-out"
           >
             <img
-              :src="datatable.image"
+              :src="datatable.image == '' ? uploadDatabase : datatable.image"
               alt="Dataset Image"
               class="w-full h-96 object-cover object-center rounded-lg shadow-md"
             />
@@ -22,7 +22,7 @@
         </router-link>
 
         <div class="relative px-4 -mt-16">
-          <div class="bg-white p-6 rounded-lg shadow-lg">
+          <div class="bg-white p-6 rounded-lg shadow-lg h-52">
             <h4
               class="mt-1 text-xl font-semibold uppercase leading-tight truncate"
             >
@@ -49,6 +49,7 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
+import uploadDatabase from "../../../assets/uploadedData.png";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 // console.log(selectedDatasetIndex.value);

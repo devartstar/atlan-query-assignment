@@ -15,7 +15,7 @@
                   <input
                     type="text"
                     name="tablename"
-                    v-model="inptableObj.title"
+                    v-model="inputData.title"
                     id="tablename"
                     class="block w-full p-1 flex-1 rounded-none rounded-r-md border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                     placeholder="... Table"
@@ -32,7 +32,7 @@
                 <div class="mt-1">
                   <textarea
                     id="tabledesc"
-                    v-model="inptableObj.description"
+                    v-model="inputData.description"
                     name="tabledesc"
                     rows="6"
                     class="mt-1 p-5 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -121,15 +121,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref } from "@vue/reactivity";
+import { ref, toRaw } from "@vue/reactivity";
 import { storeToRefs } from "pinia";
 import { onMounted } from "vue";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import Button from "../../Utils/Button.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-const inptableObj = ref(() => {});
-inptableObj.value = {
+
+const inputData = ref(() => {});
+inputData.value = {
   image: "",
   title: "",
   description: "",
@@ -145,15 +146,15 @@ function updateTableList() {
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
-      console.log(results.data);
-      inptableObj.value.jsondata = results.data;
+      //console.log(results.data);
+      inputData.value.jsondata = results.data;
     },
   });
 
-  console.log(inptableObj.value);
-  console.log(datatableList.value);
-  datatableList.value.push(inptableObj.value);
-  console.log(datatableList.value);
+  console.log(inputData.value);
+  //console.log(datatableList.value);
+  datatableList.value.push(inputData.value);
+  //console.log(datatableList.value);
 }
 
 console.log("Hello");
