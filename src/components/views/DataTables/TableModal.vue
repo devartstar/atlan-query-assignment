@@ -11,7 +11,7 @@
               <span class="font-bold"># {{ tableindex }}</span>
               {{ datatableList[tableindex].title }}
             </h2>
-            <p class="text-md text-gray-500 px-8">Display the table</p>
+            <ShowTable :tableData="datatableList[tableindex].jsondata" />
           </div>
           <div class="p-3 mt-2 text-center space-x-4 md:block">
             <router-link :to="`/query/${tableindex}`">
@@ -41,6 +41,7 @@
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import { sidebarUpdate } from "../../../composables/Sidebar";
+import ShowTable from "./ShowTable.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const props = defineProps({
