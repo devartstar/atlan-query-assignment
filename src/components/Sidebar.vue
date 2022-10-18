@@ -37,7 +37,7 @@
           :key="index"
           class="item mt-5"
         >
-          <router-link :to="option.linkto">
+          <router-link :to="getLink(index)">
             <div
               class="selbtn w-full relative inline-flex items-center pl-5 py-3 overflow-hidden text-lg font-medium text-indigo-600 border-2 border-indigo-600 rounded-md hover:text-white group hover:bg-gray-50"
               @click="sidebarUpdate(index)"
@@ -68,6 +68,10 @@
 import { Icon } from "@iconify/vue";
 import { onMounted } from "vue";
 import { sidebarToggle, sidebarUpdate } from "../composables/Sidebar";
+import { storeToRefs } from "pinia";
+import { DataStore } from "../stores/DataStore/DataStore";
+const dataStore = DataStore();
+const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 
 const optionList = [
   {
@@ -102,6 +106,15 @@ onMounted(() => {
   const sidebarEle = document.querySelector(".flex-sidebar");
   initResizerFn(resizerEle, sidebarEle);
 });
+
+function getLink(index) {
+  // conditionally redirect to query route link depending upon the dataset selected or not
+  if (index == 2 && selectedDatasetIndex.value != -1) {
+    return optionList[index].linkto + "/" + index;
+  } else {
+    return optionList[index].linkto;
+  }
+}
 
 function initResizerFn(resizer, sidebar) {
   // track current mouse position in x var
