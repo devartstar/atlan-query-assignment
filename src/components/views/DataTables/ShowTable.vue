@@ -27,9 +27,10 @@ for (let i = 0; i < headerLen; i++) {
 console.log(tableHeader);
 onMounted(() => {
   var table = new Tabulator("#exampletable", {
-    height: 405,
     data: props.tableData,
     layout: "fitColumns",
+    pagination: "local",
+    paginationSize: 10,
     columns: tableHeader,
   });
 });

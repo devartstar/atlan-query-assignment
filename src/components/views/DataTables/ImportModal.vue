@@ -146,15 +146,15 @@ function updateTableList() {
     header: true,
     skipEmptyLines: true,
     complete: function (results) {
-      //console.log(results.data);
+      console.log(results.data);
       inputData.value.jsondata = results.data;
     },
   });
 
   console.log(inputData.value);
-  //console.log(datatableList.value);
+  console.log(datatableList.value);
   datatableList.value.push(inputData.value);
-  //console.log(datatableList.value);
+  console.log(datatableList.value);
 }
 
 console.log("Hello");

@@ -3,7 +3,7 @@
     <div>
       <div class="absolute left-0 bg-black opacity-70 inset-0 t-0 z-0"></div>
       <div
-        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-3 rounded-xl shadow-lg bg-white"
+        class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full lg:max-w-5xl md:max-w-2xl sm:max-w-lg p-3 rounded-xl shadow-lg bg-white"
       >
         <div>
           <div class="text-center p-3 flex-auto justify-center leading-6">
@@ -54,4 +54,8 @@ const props = defineProps({
 selectedDatasetIndex.value = props.tableindex;
 </script>
 
-<style scoped></style>
+<style scoped>
+.status {
+  width: 600px;
+}
+</style>
