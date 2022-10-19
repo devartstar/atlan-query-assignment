@@ -9,7 +9,7 @@
     {{ datatableList[tableindex].title }}
   </h1>
 
-  <div class="sm:hidden">
+  <div class="sm:hidden m-5">
     <label for="tabs" class="sr-only">Select Query</label>
     <select
       id="tabs"
@@ -17,7 +17,7 @@
     >
       <option v-for="(query, index) in queryList" :key="index">
         <router-link :to="`/query/${selectedDatasetIndex}/${query.name}`">
-          <p class="check">{{ query.name }}</p>
+          <div class="px-5">{{ query.name }}</div>
         </router-link>
       </option>
     </select>
@@ -43,9 +43,11 @@
       <div class="lg:-mx-6 lg:flex lg:items-center">
         <Editor />
         <div class="flex flex-col mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
-          <router-view></router-view>
           <!-- Instead of router link I can also do it like this: <Group v-if="selectedQuery==group-by" /> but when number of query increases code becomes ugly-->
-          <div class="flex items-center justify-between mt-12 lg:justify-start">
+          <router-view></router-view>
+          <div
+            class="flex items-center justify-between mt-12 lg:justify-start"
+          >
             <button
               class="p-2 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
             >
@@ -69,6 +71,7 @@ import Editor from "../EditorPage/Editor.vue";
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../stores/QueryStore/QueryStore";
+import { ref } from "@vue/reactivity";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const queryStore = QueryStore();
