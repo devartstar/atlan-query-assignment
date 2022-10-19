@@ -26,11 +26,13 @@ import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";
 import { DataStore } from "../../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../../stores/QueryStore/QueryStore";
+import { EditorStore } from "../../../../stores/EditorStore/EditorStore";
 const dataStore = DataStore();
 const queryStore = QueryStore();
+const editorStore = EditorStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const { queryList } = storeToRefs(queryStore);
-
+const { editorCode } = storeToRefs(editorStore);
 const datacolumns = Object.keys(
   datatableList.value[selectedDatasetIndex.value].jsondata[0]
 );
@@ -60,18 +62,36 @@ function updateSelection(index) {
   const comulnOptions = document.querySelectorAll(".selectform");
   queryList.value[0].checkedList[index] =
     !queryList.value[0].checkedList[index];
+  columnList[index].selected = queryList.value[0].checkedList[index];
 
   if (index != 0) {
     queryList.value[0].checkedList[0] = false;
     comulnOptions[0].checked = false;
+    columnList[0].selected = queryList.value[0].checkedList[0];
   }
   if (index == 0) {
-    for (let i = 1; i < queryList.value[0].checkedList.length; i++) {
+    for (let i = 1; i < comulnOptions.length; i++) {
       queryList.value[0].checkedList[i] = false;
       comulnOptions[i].checked = false;
+      columnList[i].selected = queryList.value[0].checkedList[i];
     }
   }
-
+  console.log(columnList);
   // Update the editor
+  updateEditorCode();
+}
+
+function updateEditorCode() {
+  let appendCode = `SELECT `;
+  for (let i = 0; i < columnList.length; i++) {
+    if (columnList[i].selected == true) {
+      appendCode += `,${columnList[i].columnName} `;
+    }
+  }
+  appendCode += ` FROM ${
+    datatableList.value[selectedDatasetIndex.value].title
+  }`;
+  queryList.value[0].editorCode = appendCode;
+  console.log(queryList.value[0].editorCode);
 }
 </script>
