@@ -3,7 +3,7 @@ export const states = {
     {
       name: "SELECT",
       defn: "sql where usecase",
-      options: ["IN", "BETWEEN", "LIKE"],
+      checkedList: [],
     },
     {
       name: "WHERE",
