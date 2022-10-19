@@ -11,7 +11,7 @@ export const states = {
       options: ["IN", "BETWEEN", "LIKE"],
     },
     {
-      name: "ORDER BY",
+      name: "ORDER-BY",
       defn: "sql order-by usecase",
       options: [],
     },
@@ -26,7 +26,7 @@ export const states = {
       options: [],
     },
     {
-      name: "GROUP BY",
+      name: "GROUP-BY",
       defn: "sql group-by usecase",
       options: [],
     },
