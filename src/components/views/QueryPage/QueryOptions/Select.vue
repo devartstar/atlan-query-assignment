@@ -85,7 +85,7 @@ function updateEditorCode() {
   let appendCode = `SELECT `;
   for (let i = 0; i < columnList.length; i++) {
     if (columnList[i].selected == true) {
-      appendCode += `,${columnList[i].columnName} `;
+      appendCode += `${columnList[i].columnName}, `;
     }
   }
   appendCode += ` FROM ${
@@ -93,5 +93,13 @@ function updateEditorCode() {
   }`;
   queryList.value[0].editorCode = appendCode;
   console.log(queryList.value[0].editorCode);
+
+  editorCode.value = ``;
+  for (let i = 0; i < queryList.value.length; i++) {
+    if (queryList.value[i].editorCode != "") {
+      editorCode.value += `${queryList.value[i].editorCode} \n`;
+    }
+  }
+  console.log(editorCode.value);
 }
 </script>
