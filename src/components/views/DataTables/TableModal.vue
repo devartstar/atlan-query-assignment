@@ -43,6 +43,7 @@ import { DataStore } from "../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../stores/QueryStore/QueryStore";
 import { EditorStore } from "../../../stores/EditorStore/EditorStore";
 import { sidebarUpdate } from "../../../composables/Sidebar";
+import { refreshEditorCode } from "../../../composables/editorCode";
 import ShowTable from "./ShowTable.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
@@ -59,16 +60,9 @@ const props = defineProps({
 });
 // console.log(props.tableindex);
 selectedDatasetIndex.value = props.tableindex;
-
 function updateQueries(index) {
   sidebarUpdate(index);
-  editorCode.value = ``;
-  // update the querylist options to default
-  queryList.value[0].checkedList = new Array(100).fill(false); // for SELECT queries
-  queryList.value[0].checkedList[0] = true;
-  queryList.value[1].numericCheckedList = new Array(100).fill(false); // for SELECT queries
-  queryList.value[1].stringCheckedList = new Array(100).fill(false); // for SELECT queries
-  queryList.value[2].orderQueryList = [];
+  refreshEditorCode();
 }
 </script>
 
