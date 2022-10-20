@@ -66,6 +66,8 @@ function updateQueries(index) {
   // update the querylist options to default
   queryList.value[0].checkedList = new Array(100).fill(false); // for SELECT queries
   queryList.value[0].checkedList[0] = true;
+  queryList.value[1].numericCheckedList = new Array(100).fill(false); // for SELECT queries
+  queryList.value[1].stringCheckedList = new Array(100).fill(false); // for SELECT queries
 }
 </script>
 
