@@ -68,6 +68,7 @@ function updateQueries(index) {
   queryList.value[0].checkedList[0] = true;
   queryList.value[1].numericCheckedList = new Array(100).fill(false); // for SELECT queries
   queryList.value[1].stringCheckedList = new Array(100).fill(false); // for SELECT queries
+  queryList.value[2].orderQueryList = [];
 }
 </script>
 

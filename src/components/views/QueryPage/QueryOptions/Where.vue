@@ -2,7 +2,9 @@
   <h2 class="mb-5 mx-auto">Columns to Query Upon</h2>
   <div class="flex items-center justify-around mt-2 mx-5">
     <div>
-      <p class="mb-5 text-indigo-600 text-center">Numeric Valued Columns</p>
+      <p class="mb-5 text-indigo-600 text-center text-lg font-bold">
+        Numeric Valued Columns
+      </p>
       <label
         v-for="(column, index) in numericColList"
         :key="index"
@@ -20,7 +22,9 @@
       </label>
     </div>
     <div class="mx-5">
-      <p class="mb-5 text-indigo-600 text-center">String Valued Columns</p>
+      <p class="mb-5 text-indigo-600 text-center text-lg font-bold">
+        String Valued Columns
+      </p>
       <label
         v-for="(column, index) in stringColList"
         :key="index"
@@ -82,7 +86,11 @@ for (let i = 0; i < len; i++) {
 console.log(numericColList);
 console.log(stringColList);
 
-function updateNumericSelection(index) {}
+function updateNumericSelection(index) {
+  // some numerical queries like `BETWEEN` & '== != < > >= <=' logics
+}
 
-function updateStringSelection(index) {}
+function updateStringSelection(index) {
+  // some string queries like `IN` & `LIKE`
+}
 </script>

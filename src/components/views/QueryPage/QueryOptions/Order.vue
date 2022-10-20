@@ -15,7 +15,7 @@
     </div>
 
     <div class="w-3/5">
-      <p class="text-indigo-600 text-center">Order Rules :-</p>
+      <p class="text-indigo-600 text-center">Order Rules & Priority:-</p>
       <draggable
         tag="ul"
         :list="queryList[2].orderQueryList"
@@ -31,8 +31,9 @@
             <select
               v-model="element.orderRule"
               class="block w-1/2 py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded"
+              @change="updateEditorCode"
             >
-              <option disabled value="element.orderRule">select order</option>
+              <option disabled>select order</option>
               <option>ASC</option>
               <option>DESC</option>
             </select>
@@ -101,6 +102,7 @@ function removeEle(idx) {
   toAddColumn.value.push(ele.name);
   console.log(toAddColumn.value);
   console.log(queryList.value[2].orderQueryList);
+  updateEditorCode();
 }
 function addEle(idx) {
   // do something
@@ -112,6 +114,43 @@ function addEle(idx) {
   updateLists();
   console.log(toAddColumn.value);
   console.log(queryList.value[2].orderQueryList);
+  updateEditorCode();
+}
+
+function updateEditorCode() {
+  console.log("HELLO FROM UPDATE CODE EDITOR");
+  console.log(queryList.value[2].orderQueryList);
+  let ascendingString = ``;
+  let descendingString = ``;
+  console.log(queryList.value[2].orderQueryList);
+  let len = queryList.value[2].orderQueryList.length;
+  for (let i = 0; i < len; i++) {
+    if (queryList.value[2].orderQueryList[i].orderRule == "ASC") {
+      ascendingString += `${queryList.value[2].orderQueryList[i].name}, `;
+    } else {
+      descendingString += `${queryList.value[2].orderQueryList[i].name}, `;
+    }
+  }
+  console.log(ascendingString);
+  console.log(descendingString);
+  console.log(editorCode.value);
+  let appendCode = ``;
+  if (ascendingString.length > 0 || descendingString.length > 0) {
+    appendCode += `WHERE `;
+  }
+  if (ascendingString.length > 0) {
+    appendCode += `${ascendingString} ASC, \n      `;
+  }
+  if (descendingString.length > 0) {
+    appendCode += `${descendingString} DESC `;
+  }
+  queryList.value[2].editorCode = appendCode;
+  editorCode.value = ``;
+  for (let i = 0; i < queryList.value.length; i++) {
+    if (queryList.value[i].editorCode != "") {
+      editorCode.value += `${queryList.value[i].editorCode} \n`;
+    }
+  }
 }
 </script>
 <style scoped></style>
