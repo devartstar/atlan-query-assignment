@@ -1,7 +1,8 @@
 <template>
   <h2 class="mb-5 mx-auto">Columns to Query Upon</h2>
-  <div class="flex items-center justify-center mt-2">
+  <div class="flex items-center justify-around mt-2 mx-5">
     <div>
+      <p class="mb-5 text-indigo-600 text-center">Numeric Valued Columns</p>
       <label
         v-for="(column, index) in numericColList"
         :key="index"
@@ -19,6 +20,7 @@
       </label>
     </div>
     <div class="mx-5">
+      <p class="mb-5 text-indigo-600 text-center">String Valued Columns</p>
       <label
         v-for="(column, index) in stringColList"
         :key="index"

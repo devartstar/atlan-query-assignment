@@ -18,6 +18,7 @@ export const states = {
       name: "ORDER-BY",
       defn: "sql order-by usecase",
       options: [],
+      orderQueryList: [], // {name: column_name, order_rule: ASC/DESC }
       editorCode: "",
     },
     {
