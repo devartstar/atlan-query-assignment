@@ -1,3 +1,5 @@
 <template>This is Order query</template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+
+</script>

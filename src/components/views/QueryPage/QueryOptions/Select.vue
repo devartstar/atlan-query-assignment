@@ -1,7 +1,7 @@
 <template>
+  <h2 class="mb-5 mx-auto">Select Column Name to display</h2>
   <div class="flex items-center justify-center mt-2">
     <div>
-      <h2 class="mb-2">Select Column Name to display</h2>
       <label
         v-for="(column, index) in columnList"
         :key="index"

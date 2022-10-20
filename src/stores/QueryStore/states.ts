@@ -10,6 +10,8 @@ export const states = {
       name: "WHERE",
       defn: "sql where usecase",
       options: ["IN", "BETWEEN", "LIKE"],
+      numericCheckedList: [],
+      stringCheckedList: [],
       editorCode: "",
     },
     {
