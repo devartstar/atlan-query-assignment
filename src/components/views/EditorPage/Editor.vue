@@ -5,7 +5,8 @@
     :dark="true"
     :lang="lang"
     :tab="true"
-    class="max-h-96"
+    class="max-h-96 text-lg"
+    :wrap="true"
     :readonly="true"
   />
 </template>

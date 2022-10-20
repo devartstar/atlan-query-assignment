@@ -41,9 +41,3 @@ export const states = {
     },
   ],
 };
-
-/*
-SELECT 
-  -> Select columns dropdown (generate the array and fill the dropdown element)
-
-*/
