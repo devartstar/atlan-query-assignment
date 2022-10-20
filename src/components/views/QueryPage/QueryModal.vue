@@ -49,22 +49,14 @@
         <div class="flex flex-col mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
           <!-- Instead of router link I can also do it like this: <Group v-if="selectedQuery==group-by" /> but when number of query increases code becomes ugly-->
           <router-view></router-view>
-          <div class="flex items-center justify-between mt-12 lg:justify-start">
-            <button
-              class="p-2 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
-            >
-              <img src="../../../assets/left_dir.svg" class="w-6 h-6" />
-            </button>
-
-            <button
-              class="p-2 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 lg:mx-6 hover:bg-gray-100"
-            >
-              <img src="../../../assets/right_dir.svg" class="w-6 h-6" />
-            </button>
-          </div>
         </div>
       </div>
     </div>
+    <router-link to="/result">
+      <div class="flex flex-col justify-center items-center">
+        <Button buttonText="See Results" />
+      </div>
+    </router-link>
   </section>
 </template>
 
@@ -74,6 +66,7 @@ import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../stores/QueryStore/QueryStore";
 import { ref } from "@vue/reactivity";
+import Button from "../../Utils/Button.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const queryStore = QueryStore();
