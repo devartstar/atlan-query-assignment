@@ -3,32 +3,40 @@ export const states = {
     {
       name: "SELECT",
       defn: "sql where usecase",
-      options: ["IN", "BETWEEN", "LIKE"],
+      checkedList: [],
+      editorCode: "",
     },
     {
       name: "WHERE",
       defn: "sql where usecase",
       options: ["IN", "BETWEEN", "LIKE"],
+      numericCheckedList: [],
+      stringCheckedList: [],
+      editorCode: "",
     },
     {
       name: "ORDER-BY",
       defn: "sql order-by usecase",
       options: [],
+      editorCode: "",
     },
     {
       name: "LIMIT",
       defn: "sql limit usecase",
       options: [],
+      editorCode: "",
     },
     {
       name: "OFFSET",
       defn: "sql offset usecase",
       options: [],
+      editorCode: "",
     },
     {
       name: "GROUP-BY",
       defn: "sql group-by usecase",
       options: [],
+      editorCode: "",
     },
   ],
 };
