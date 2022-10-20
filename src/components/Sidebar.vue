@@ -90,11 +90,6 @@ const optionList = [
     linkto: "/query",
   },
   {
-    name: "Editor",
-    icon: "bi:file-earmark-code-fill",
-    linkto: "/editor",
-  },
-  {
     name: "Result",
     icon: "fluent:document-table-search-20-filled",
     linkto: "/result",

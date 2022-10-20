@@ -41,13 +41,15 @@
   <section class="bg-white dark:bg-gray-900">
     <div class="container px-6 py-10 mx-auto">
       <div class="lg:-mx-6 lg:flex lg:items-center">
-        <Editor />
+        <div
+          class="lg:w-1/2 mx-4 lg:mx-6 w-1/2 h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
+        >
+          <Editor />
+        </div>
         <div class="flex flex-col mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
           <!-- Instead of router link I can also do it like this: <Group v-if="selectedQuery==group-by" /> but when number of query increases code becomes ugly-->
           <router-view></router-view>
-          <div
-            class="flex items-center justify-between mt-12 lg:justify-start"
-          >
+          <div class="flex items-center justify-between mt-12 lg:justify-start">
             <button
               class="p-2 transition-colors duration-300 border rounded-full rtl:-scale-x-100 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800 hover:bg-gray-100"
             >
