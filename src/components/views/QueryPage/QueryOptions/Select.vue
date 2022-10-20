@@ -1,5 +1,7 @@
 <template>
-  <h2 class="mb-5 mx-auto">Select Column Name to display</h2>
+  <p class="mb-5 text-indigo-600 text-center text-lg font-bold">
+    Select Column Name to display
+  </p>
   <div class="flex items-center justify-center mt-2">
     <div>
       <label

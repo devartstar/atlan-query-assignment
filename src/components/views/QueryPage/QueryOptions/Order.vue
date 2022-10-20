@@ -1,6 +1,7 @@
 <template>
   <div class="flex flex-wrap justify-between">
     <div class="w-1/6">
+      <p class="mb-5 text-indigo-600 text-center text-lg font-bold">Select</p>
       <div class="inline-flex flex-col">
         <a
           v-for="(column, index) in toAddColumn"
@@ -15,13 +16,16 @@
     </div>
 
     <div class="w-3/5">
-      <p class="text-indigo-600 text-center">Order Rules & Priority:-</p>
+      <p class="mb-5 text-indigo-600 text-center text-lg font-bold">
+        Order Rules & Priority:-
+      </p>
       <draggable
         tag="ul"
         :list="queryList[2].orderQueryList"
         class="flex flex-col pl-0 mb-0 rounded border-gray-300"
         handle=".handle"
         item-key="name"
+        @change="updateEditorCode"
       >
         <template #item="{ element, index }">
           <li

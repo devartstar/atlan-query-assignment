@@ -3,6 +3,7 @@ import { onMounted, ref } from "vue";
 import { DataStore } from "../stores/DataStore/DataStore";
 import { QueryStore } from "../stores/QueryStore/QueryStore";
 import { EditorStore } from "../stores/EditorStore/EditorStore";
+import { genPropsAccessExp } from "@vue/shared";
 
 export function refreshEditorCode() {
   const dataStore = DataStore();
@@ -18,4 +19,8 @@ export function refreshEditorCode() {
   queryList.value[1].numericCheckedList = new Array(100).fill(false); // for WHERE queries
   queryList.value[1].stringCheckedList = new Array(100).fill(false); // for WHERE queries
   queryList.value[2].orderQueryList = [];
+  console.log(queryList.value);
+  for (let i = 0; i < queryList.value.length; i++) {
+    queryList.value[i].editorCode = ``;
+  }
 }
