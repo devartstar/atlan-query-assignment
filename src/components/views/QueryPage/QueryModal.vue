@@ -44,7 +44,7 @@
         <div
           class="lg:w-1/2 mx-4 lg:mx-6 w-1/2 h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
         >
-          <Editor />
+          <Editor :readOnly="true" />
         </div>
         <div class="flex flex-col mt-8 lg:w-1/2 lg:px-6 lg:mt-0">
           <!-- Instead of router link I can also do it like this: <Group v-if="selectedQuery==group-by" /> but when number of query increases code becomes ugly-->

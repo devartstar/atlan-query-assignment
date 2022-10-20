@@ -29,6 +29,7 @@ import { onMounted, ref } from "vue";
 import { DataStore } from "../../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../../stores/QueryStore/QueryStore";
 import { EditorStore } from "../../../../stores/EditorStore/EditorStore";
+import { generateResult } from "../../../../composables/queryFunctions";
 const dataStore = DataStore();
 const queryStore = QueryStore();
 const editorStore = EditorStore();
@@ -103,5 +104,7 @@ function updateEditorCode() {
     }
   }
   console.log(editorCode.value);
+
+  generateResult();
 }
 </script>

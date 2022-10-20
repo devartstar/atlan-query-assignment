@@ -7,7 +7,7 @@
     :tab="true"
     class="max-h-96 text-lg"
     :wrap="true"
-    :readonly="true"
+    :readonly="readOnly"
   />
 </template>
 
@@ -25,4 +25,11 @@ const queryStore = QueryStore();
 const { queryList } = storeToRefs(queryStore);
 
 const lang = sql();
+const props = defineProps({
+  readOnly: {
+    type: Boolean,
+    default: true,
+  },
+});
+console.log("editor", props.readOnly);
 </script>

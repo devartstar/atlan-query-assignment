@@ -37,13 +37,16 @@
       v-if="editorDisplay"
       class="lg:w-1/2 mx-4 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
     >
-      <Editor />
+      <p class="mb-5 text-indigo-600 text-center text-lg font-bold">
+        Modify Query Code and Play Around !!!
+      </p>
+      <Editor :readOnly="false" />
     </div>
     <div
       v-if="!editorDisplay"
       class="lg:w-full mx-4 lg:mx-6 w-full h-96 lg lg:h-[36rem]"
     >
-      <ShowTable :tableData="datatableList[0].jsondata" />
+      <ShowTable :tableData="resultData" />
     </div>
   </div>
 </template>
@@ -52,8 +55,11 @@
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../stores/DataStore/DataStore";
+import { ResultStore } from "../../stores/ResultStore/ResultStore";
 const dataStore = DataStore();
+const resultStore = ResultStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+const { resultData } = storeToRefs(resultStore);
 import Editor from "./EditorPage/Editor.vue";
 import ShowTable from "./DataTables/ShowTable.vue";
 const editorDisplay = ref(false);
