@@ -3,15 +3,17 @@ import { onMounted, ref } from "vue";
 import { DataStore } from "../stores/DataStore/DataStore";
 import { QueryStore } from "../stores/QueryStore/QueryStore";
 import { EditorStore } from "../stores/EditorStore/EditorStore";
-import { genPropsAccessExp } from "@vue/shared";
+import { ResultStore } from "../stores/ResultStore/ResultStore";
 
 export function refreshEditorCode() {
   const dataStore = DataStore();
   const queryStore = QueryStore();
   const editorStore = EditorStore();
+  const resultStore = ResultStore();
   const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
   const { queryList } = storeToRefs(queryStore);
   const { editorCode } = storeToRefs(editorStore);
+  const { resultData } = storeToRefs(resultStore);
   // update the querylist options to default
   editorCode.value = ``;
   queryList.value[0].checkedList = new Array(100).fill(false); // for SELECT queries
@@ -23,4 +25,5 @@ export function refreshEditorCode() {
   for (let i = 0; i < queryList.value.length; i++) {
     queryList.value[i].editorCode = ``;
   }
+  resultData.value = [];
 }
