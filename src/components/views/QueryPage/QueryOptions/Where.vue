@@ -1,5 +1,7 @@
 <template>
-  <h2 class="mb-5 mx-auto">Columns to Query Upon</h2>
+  <h2 class="mb-5 text-indigo-600 text-center text-2xl font-bold">
+    Columns to Query Upon
+  </h2>
   <div class="flex items-center justify-around mt-2 mx-5">
     <div>
       <p class="mb-5 text-indigo-600 text-center text-lg font-bold">

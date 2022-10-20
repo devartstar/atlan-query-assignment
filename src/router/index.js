@@ -3,7 +3,6 @@ import Home from "/src/components/views/Home.vue";
 import Query from "../components/views/QueryPage/Query.vue";
 import QueryModal from "../components/views/QueryPage/QueryModal.vue";
 import Result from "/src/components/views/Result.vue";
-import Editor from "/src/components/views/EditorPage/Editor.vue";
 import Datatable from "/src/components/views/DataTables/Datatable.vue";
 import TableModal from "../components/views/DataTables/TableModal.vue";
 import ImportModal from "../components/views/DataTables/ImportModal.vue";
@@ -83,11 +82,6 @@ const routes = [
     names: "Import File",
     component: ImportModal,
     props: true,
-  },
-  {
-    path: "/editor",
-    names: "Editor",
-    component: Editor,
   },
   {
     path: "/result",
