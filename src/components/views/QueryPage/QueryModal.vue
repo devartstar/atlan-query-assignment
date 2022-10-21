@@ -54,7 +54,7 @@
     </div>
     <router-link to="/result">
       <div class="flex flex-col justify-center items-center">
-        <Button buttonText="See Results" />
+        <Button buttonText="See Results" @click="sidebarUpdate(3)" />
       </div>
     </router-link>
   </section>
@@ -65,6 +65,7 @@ import Editor from "../EditorPage/Editor.vue";
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../stores/QueryStore/QueryStore";
+import { sidebarUpdate } from "../../../composables/Sidebar";
 import { ref } from "@vue/reactivity";
 import Button from "../../Utils/Button.vue";
 const dataStore = DataStore();

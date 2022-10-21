@@ -38,14 +38,14 @@
               Learn SQL Queries with Live Code Updating
             </h2>
             <p class="mb-8 leading-loose text-gray-500 dark:text-gray-300">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-              sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed
-              porttitor est nibh at nulla. Praesent placerat enim ut ex
-              tincidunt vehicula. Fusce sit amet dui tellus. Lorem ipsum dolor
-              sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec
-              venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh
-              at nulla. Praesent placerat enim ut ex tincidunt vehicula. Fusce
-              sit amet dui tellus.
+              A simple project to learn coding SQL queries in a simplified
+              manner. Choose a predefined dataset or import your own
+              dataset(CSV) and view it in tabular form. Once selected choose
+              among the simple queries and their options to execute and check
+              the code for getting dynamically updated in the editor. Click on
+              Results to see the Results on running the Queries. Which also
+              provides a toggle editor function where you can modify the query
+              code and see the result.(This is WIP)
             </p>
             <div class="w-full md:w-1/3">
               <router-link to="/datatable">

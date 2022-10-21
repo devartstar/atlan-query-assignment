@@ -14,7 +14,7 @@
       <div class="lg:mt-0 lg:flex-shrink-0">
         <div class="mt-3 inline-flex rounded-md shadow">
           <router-link to="/datatable">
-            <Button buttonText="Data" />
+            <Button buttonText="Data" @click="sidebarUpdate(1)" />
           </router-link>
         </div>
       </div>
@@ -26,6 +26,7 @@
 import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
+import { sidebarUpdate } from "../../../composables/Sidebar";
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 import Button from "../../Utils/Button.vue";
 </script>
