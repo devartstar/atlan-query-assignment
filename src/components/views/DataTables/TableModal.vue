@@ -14,7 +14,7 @@
             <ShowTable :tableData="datatableList[tableindex].jsondata" />
           </div>
           <div class="p-3 mt-2 text-center space-x-4 md:block">
-            <router-link :to="`/query/${tableindex}`">
+            <router-link :to="`/query/${tableindex}/SELECT`">
               <button
                 class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-md hover:shadow-lg hover:bg-gray-100"
                 @click="updateQueries(2)"

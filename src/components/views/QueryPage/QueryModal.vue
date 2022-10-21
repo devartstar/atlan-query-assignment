@@ -42,7 +42,7 @@
     <div class="container px-6 py-10 mx-auto">
       <div class="lg:-mx-6 lg:flex lg:items-center">
         <div
-          class="lg:w-1/2 mx-4 lg:mx-6 w-1/2 h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
+          class="lg:w-1/2 mx-4 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
         >
           <Editor :readOnly="true" />
         </div>

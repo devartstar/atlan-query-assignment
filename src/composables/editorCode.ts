@@ -17,7 +17,7 @@ export function refreshEditorCode() {
   // update the querylist options to default
   editorCode.value = ``;
   queryList.value[0].checkedList = new Array(100).fill(false); // for SELECT queries
-  queryList.value[0].checkedList[0] = true;
+  queryList.value[0].checkedList[0] = false;
   queryList.value[1].numericCheckedList = new Array(100).fill(false); // for WHERE queries
   queryList.value[1].stringCheckedList = new Array(100).fill(false); // for WHERE queries
   queryList.value[2].orderQueryList = [];

@@ -43,7 +43,7 @@ const datacolumns = Object.keys(
 const columnList = [
   {
     columnName: "*",
-    selected: true,
+    selected: false,
   },
 ];
 const len = datacolumns.length;
