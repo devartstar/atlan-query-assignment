@@ -54,7 +54,7 @@
     </div>
     <router-link to="/result">
       <div class="flex flex-col justify-center items-center">
-        <Button buttonText="See Results" @click="sidebarUpdate(3)" />
+        <Button buttonText="See Results" @click="seeResult" />
       </div>
     </router-link>
   </section>
@@ -66,10 +66,15 @@ import { storeToRefs } from "pinia";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import { QueryStore } from "../../../stores/QueryStore/QueryStore";
 import { sidebarUpdate } from "../../../composables/Sidebar";
+import { generateResult } from "../../../composables/queryFunctions";
 import { ref } from "@vue/reactivity";
 import Button from "../../Utils/Button.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const queryStore = QueryStore();
 const { queryList } = storeToRefs(queryStore);
+function seeResult() {
+  generateResult();
+  sidebarUpdate(3);
+}
 </script>

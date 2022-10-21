@@ -104,7 +104,6 @@ function updateEditorCode() {
     }
   }
   console.log(editorCode.value);
-
-  generateResult();
+  // generateResult()
 }
 </script>

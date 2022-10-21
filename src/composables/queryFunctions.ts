@@ -5,6 +5,7 @@ import { EditorStore } from "../stores/EditorStore/EditorStore";
 import { ResultStore } from "../stores/ResultStore/ResultStore";
 
 export function generateResult() {
+  console.log("HERE STUCK FOR BIG DATA - IMPROVE IT");
   const dataStore = DataStore();
   const queryStore = QueryStore();
   const editorStore = EditorStore();
@@ -29,18 +30,14 @@ export function generateResult() {
     }
   }
   console.log(columns);
-  for (
-    let i = 0;
-    i < datatableList.value[selectedDatasetIndex.value].jsondata.length;
-    i++
-  ) {
+
+  datatableList.value[selectedDatasetIndex.value].jsondata.forEach((ele) => {
     let resObj = {};
     columns.forEach((column) => {
-      resObj[column] =
-        datatableList.value[selectedDatasetIndex.value].jsondata[i][column];
+      resObj[column] = ele[column];
     });
     console.log(resObj);
-    resultData.value.unshift(resObj);
-  }
+    resultData.value.push(resObj);
+  });
   console.log(resultData.value);
 }
