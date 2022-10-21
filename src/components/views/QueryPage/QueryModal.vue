@@ -6,7 +6,7 @@
       class="bg-blue-100 text-blue-800 text-2xl font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-2"
       >Queries for</span
     >
-    {{ datatableList[tableindex].title }}
+    {{ datatableList[selectedDatasetIndex].title }}
   </h1>
 
   <div class="sm:hidden m-5">
@@ -71,10 +71,4 @@ const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const queryStore = QueryStore();
 const { queryList } = storeToRefs(queryStore);
-const props = defineProps({
-  tableindex: {
-    type: Number,
-    required: true,
-  },
-});
 </script>

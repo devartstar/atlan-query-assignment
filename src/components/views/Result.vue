@@ -63,7 +63,7 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center m-3 container">
+    <div class="flex justify-center m-3 container bg-white">
       <div
         v-if="editorDisplay"
         class="lg:w-1/2 mx-4 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
