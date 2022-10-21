@@ -1,6 +1,6 @@
 # Atlan - Internship Task
 
-[DemoOfAssignment.webm](https://user-images.githubusercontent.com/61665451/197123621-81abc93b-6250-453e-8223-c97202d5718c.webm)
+[AssignmentDemo.webm](https://user-images.githubusercontent.com/61665451/197129026-52c172a0-719f-48ed-97b3-2e1fc2164d76.webm)
 
 
 # Development Server
