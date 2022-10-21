@@ -1,12 +1,7 @@
 # Atlan - Internship Task
 
-- This is a dummy application.
-- This application include a space to accept SQL queries. This can be as simple as a textarea or as complex as a full-blown code-editor. This does not figure in the judging criteria though.
-- This application does not need to contain a backend, a query engine or query validation.
-- This application does contain syntax validation.
-- The data that the application displays is any chunk of data. It does not represent the actual result that the query would display if it was actually run.
-- You can write down any query you wish. It contains dummy stubs and mocks wherever the need arises.
-- This application has more than one query accompanied by its corresponding table of data. You can toggle between these queries and choose any query and view the table of data accompanying it.
+[DemoOfAssignment.webm](https://user-images.githubusercontent.com/61665451/197123621-81abc93b-6250-453e-8223-c97202d5718c.webm)
+
 
 # Development Server
 
