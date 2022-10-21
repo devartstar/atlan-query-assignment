@@ -5,7 +5,7 @@ import { EditorStore } from "../stores/EditorStore/EditorStore";
 import { ResultStore } from "../stores/ResultStore/ResultStore";
 
 export function generateResult() {
-  console.log("HERE STUCK FOR BIG DATA - IMPROVE IT");
+  //   console.log("HERE MIGHT STUCK FOR BIG DATA (100,000 Rows does work)- IMPROVE LOGIC  - ");
   const dataStore = DataStore();
   const queryStore = QueryStore();
   const editorStore = EditorStore();

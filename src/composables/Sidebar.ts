@@ -1,9 +1,14 @@
+import { generateResult } from "./queryFunctions";
+
 export function sidebarToggle() {
   document.querySelector(".flex-sidebar").classList.add("hidden");
 }
 
 export function sidebarUpdate(index) {
   sidebarToggle();
+  if (index === 3) {
+    generateResult();
+  }
   const sidebarOptions = document.querySelectorAll(".selbtn");
   [...sidebarOptions].forEach(function (ele, ind) {
     if (ind == index) {
