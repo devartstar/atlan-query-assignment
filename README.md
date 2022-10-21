@@ -69,3 +69,4 @@ Sneak Peak of the Site -
 - [ ] Add local storage to store the imported datasets.
 - [ ] Add more queries and their functionality.
 - [ ] Work on Editable Editor in Result page to check query Validiation.
+- [ ] Complete Dark theme styling
