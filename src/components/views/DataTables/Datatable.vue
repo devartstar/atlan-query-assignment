@@ -1,6 +1,12 @@
 <template>
   <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4">
+      <h2
+        v-if="datatableList.length == 0"
+        class="text-4xl text-indigo-600 mx-auto mt-10 font-semibold"
+      >
+        Import Datasets for Queries
+      </h2>
       <div
         v-for="(datatable, index) in datatableList"
         :key="index"
