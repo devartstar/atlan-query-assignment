@@ -1,5 +1,5 @@
 <template>
-  <div id="exampletable"></div>
+  <div id="exampletable" class="disptable"></div>
   <Pagination @change-size="updateSize($event)" />
 </template>
 
@@ -50,3 +50,9 @@ onMounted(() => {
   generateTable();
 });
 </script>
+
+<style scoped>
+.disptable {
+  max-height: 60vh;
+}
+</style>
