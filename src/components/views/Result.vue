@@ -77,7 +77,7 @@
         v-if="!editorDisplay && selectedDatasetIndex != -1"
         class="lg:w-full mx-4 lg:mx-6 w-full h-96 lg lg:h-[36rem]"
       >
-        <ShowTable :tableData="getData()" />
+        <ShowTable :tableData="getData()"/>
       </div>
     </div>
   </template>

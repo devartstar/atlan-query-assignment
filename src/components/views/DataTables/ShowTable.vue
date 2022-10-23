@@ -1,11 +1,13 @@
 <template>
   <div id="exampletable"></div>
+  <Pagination @change-size="updateSize($event)" />
 </template>
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { DataStore } from "../../../stores/DataStore/DataStore";
+import Pagination from "../../Utils/Pagination.vue";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 const props = defineProps({
@@ -13,7 +15,17 @@ const props = defineProps({
     type: [],
     required: true,
   },
+  showPagination: {
+    type: Boolean,
+    default: false,
+  },
 });
+const selectedSize = ref(10);
+function updateSize(sz) {
+  console.log(sz);
+  selectedSize.value = sz;
+  generateTable();
+}
 console.log(props.tableData);
 const dataHeaders = Object.keys(props.tableData[0]);
 const headerLen = dataHeaders.length;
@@ -25,13 +37,16 @@ for (let i = 0; i < headerLen; i++) {
   });
 }
 console.log(tableHeader);
-onMounted(() => {
+function generateTable() {
   var table = new Tabulator("#exampletable", {
     data: props.tableData,
     layout: "fitColumns",
     pagination: "local",
-    paginationSize: 10,
+    paginationSize: selectedSize.value,
     columns: tableHeader,
   });
+}
+onMounted(() => {
+  generateTable();
 });
 </script>
