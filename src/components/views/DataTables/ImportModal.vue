@@ -149,7 +149,7 @@ function updateTableList() {
       console.log("ok1", results.data);
       inputData.value.jsondata = results.data;
       datatableList.value.push(inputData.value);
-      localStorage.tables = JSON.stringify(datatableList.value);
+      // localStorage.tables = JSON.stringify(datatableList.value);
     },
   });
 
