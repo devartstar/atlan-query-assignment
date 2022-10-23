@@ -4,7 +4,7 @@
       <div
         v-for="(datatable, index) in datatableList"
         :key="index"
-        class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4"
+        class="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4 relative"
         :class="
           index === selectedDatasetIndex ? `border-2 border-indigo-600` : ``
         "
@@ -21,6 +21,11 @@
           </div>
         </router-link>
 
+        <span
+          class="text-2xl absolute top-0 right-0 text-indigo-600 hover:text-red-600 m--2"
+          @click="removeTable(index)"
+          ><Icon icon="ant-design:close-circle-filled"
+        /></span>
         <div class="relative px-4 -mt-16">
           <div class="bg-white p-6 rounded-lg shadow-lg h-52">
             <h4
@@ -48,6 +53,7 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { Icon } from "@iconify/vue";
 import { DataStore } from "../../../stores/DataStore/DataStore";
 import uploadDatabase from "../../../assets/uploadedData.png";
 const dataStore = DataStore();
@@ -57,4 +63,11 @@ const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 
 import Button from "../../Utils/Button.vue";
 import { sidebarUpdate } from "../../../composables/Sidebar";
+
+function removeTable(index) {
+  console.log("okk");
+  console.log(datatableList.value);
+  datatableList.value.splice(index, 1);
+  console.log(datatableList.value);
+}
 </script>
