@@ -14,6 +14,7 @@ export function generateResult() {
   const { queryList } = storeToRefs(queryStore);
   const { editorCode } = storeToRefs(editorStore);
   const { resultData } = storeToRefs(resultStore);
+  if (selectedDatasetIndex.value == -1) return;
   resultData.value = [];
   let len = datatableList.value[selectedDatasetIndex.value].jsondata.length;
   const datacolumns = Object.keys(

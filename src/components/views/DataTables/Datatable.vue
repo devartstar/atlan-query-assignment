@@ -81,5 +81,8 @@ function removeTable(index) {
   datatableList.value.splice(index, 1);
   console.log(datatableList.value);
   localStorage.tables = JSON.stringify(datatableList.value);
+  if (index == selectedDatasetIndex.value) {
+    selectedDatasetIndex.value = -1;
+  }
 }
 </script>
