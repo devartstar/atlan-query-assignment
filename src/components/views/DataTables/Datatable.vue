@@ -69,11 +69,17 @@ const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 
 import Button from "../../Utils/Button.vue";
 import { sidebarUpdate } from "../../../composables/Sidebar";
-
+import { onMounted } from "@vue/runtime-core";
+onMounted(() => {
+  if (localStorage.tables) {
+    datatableList.value = JSON.parse(localStorage.tables);
+  }
+});
 function removeTable(index) {
   console.log("okk");
   console.log(datatableList.value);
   datatableList.value.splice(index, 1);
   console.log(datatableList.value);
+  localStorage.tables = JSON.stringify(datatableList.value);
 }
 </script>

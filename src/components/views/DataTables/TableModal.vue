@@ -58,7 +58,9 @@ const props = defineProps({
     required: true,
   },
 });
-// console.log(props.tableindex);
+console.log(datatableList.value);
+console.log(datatableList.value[props.tableindex].jsondata);
+console.log(props.tableindex);
 selectedDatasetIndex.value = props.tableindex;
 function updateQueries(index) {
   sidebarUpdate(index);
