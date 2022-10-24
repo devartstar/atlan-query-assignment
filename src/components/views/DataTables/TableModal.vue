@@ -39,29 +39,31 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { DataStore } from "../../../stores/DataStore/DataStore";
-import { QueryStore } from "../../../stores/QueryStore/QueryStore";
-import { EditorStore } from "../../../stores/EditorStore/EditorStore";
 import { sidebarUpdate } from "../../../composables/Sidebar";
 import { refreshEditorCode } from "../../../composables/editorCode";
 import ShowTable from "./ShowTable.vue";
+
+// initializing DataStore
+import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-const queryStore = QueryStore();
-const { queryList } = storeToRefs(queryStore);
-const editorStore = EditorStore();
-const { editorCode } = storeToRefs(editorStore);
 
 const props = defineProps({
+  /** obtaining from the route Link for table we are viewing*/
   tableindex: {
     type: Number,
     required: true,
   },
 });
-console.log(datatableList.value);
-console.log(datatableList.value[props.tableindex].jsondata);
-console.log(props.tableindex);
+
 selectedDatasetIndex.value = props.tableindex;
+
+/**
+ * If Table is selected then some things need to be updated
+ * The sidebar points to the Query Page
+ * The Editor code is refreshed
+ * @param index index of the selected dataset
+ */
 function updateQueries(index) {
   sidebarUpdate(index);
   refreshEditorCode();

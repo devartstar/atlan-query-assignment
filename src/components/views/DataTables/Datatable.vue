@@ -60,29 +60,33 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
-import { DataStore } from "../../../stores/DataStore/DataStore";
 import uploadDatabase from "../../../assets/uploadedData.png";
+import Button from "../../Utils/Button.vue";
+
+import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-// console.log(selectedDatasetIndex.value);
-// not updating with new selected index - force re-render component
 
-import Button from "../../Utils/Button.vue";
-import { sidebarUpdate } from "../../../composables/Sidebar";
+/**
+ * Remove a table from the List of tables
+ * If the tables is selected one (change to No table selected)
+ * @param {string} index The index of the table to remove
+ */
+function removeTable(index) {
+  datatableList.value.splice(index, 1);
+  // localStorage.tables = JSON.stringify(datatableList.value);
+  if (index == selectedDatasetIndex.value) {
+    selectedDatasetIndex.value = -1;
+  }
+}
+
+/**
+ * updating the content with that stored in local storage
+ */
 // import { onMounted } from "@vue/runtime-core";
 // onMounted(() => {
 //   if (localStorage.tables) {
 //     datatableList.value = JSON.parse(localStorage.tables);
 //   }
 // });
-function removeTable(index) {
-  console.log("okk");
-  console.log(datatableList.value);
-  datatableList.value.splice(index, 1);
-  console.log(datatableList.value);
-  // localStorage.tables = JSON.stringify(datatableList.value);
-  if (index == selectedDatasetIndex.value) {
-    selectedDatasetIndex.value = -1;
-  }
-}
 </script>

@@ -121,15 +121,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, toRaw } from "@vue/reactivity";
+import { ref } from "@vue/reactivity";
 import { storeToRefs } from "pinia";
-import { onMounted } from "vue";
-import { DataStore } from "../../../stores/DataStore/DataStore";
 import Button from "../../Utils/Button.vue";
+
+// Initializing DataStore
+import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 
+// ref variable
 const inputData = ref(() => {});
+
+/**
+ *  Object containg information to the input form
+ */
 inputData.value = {
   image: "",
   title: "",
@@ -137,6 +143,9 @@ inputData.value = {
   jsondata: [{}],
 };
 
+/**
+ * Parsing the imported file to desired array of object form using papaparse library
+ */
 function updateTableList() {
   // add another item to the tables store
   // reditrect to /tabledata/{new tableindex}
@@ -152,13 +161,7 @@ function updateTableList() {
       // localStorage.tables = JSON.stringify(datatableList.value);
     },
   });
-
-  // console.log(inputData.value);
-  // console.log(datatableList.value);
-  // console.log(datatableList.value);
 }
-
-console.log("Hello");
 </script>
 
 <style scoped></style>

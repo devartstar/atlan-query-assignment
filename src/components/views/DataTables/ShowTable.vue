@@ -4,29 +4,37 @@
 </template>
 
 <script setup lang="ts">
-import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";
-import { DataStore } from "../../../stores/DataStore/DataStore";
 import Pagination from "../../Utils/Pagination.vue";
-const dataStore = DataStore();
-const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+
 const props = defineProps({
+  /** Data for the table to be displayed */
   tableData: {
     type: [],
     required: true,
   },
+  /** If we need Pagenation */
   showPagination: {
     type: Boolean,
     default: false,
   },
 });
+
 const selectedSize = ref(10);
+/**
+ * Updates the Number of rows in the table
+ * using emit property from child to change valued of selectedSize in parent
+ * @param sz Number of rows to display in the table
+ */
 function updateSize(sz) {
-  console.log(sz);
   selectedSize.value = sz;
   generateTable();
 }
-console.log(props.tableData);
+
+/**
+ * [Array of strings] dataHeaders list of keys of the Objejet
+ * [Array of Objects] tableHeader headers for the tablr
+ */
 const dataHeaders = Object.keys(props.tableData[0]);
 const headerLen = dataHeaders.length;
 const tableHeader = [];
@@ -36,7 +44,10 @@ for (let i = 0; i < headerLen; i++) {
     field: dataHeaders[i],
   });
 }
-console.log(tableHeader);
+
+/**
+ * generates the table form the array of object using library called Tabulator
+ */
 function generateTable() {
   var table = new Tabulator("#exampletable", {
     data: props.tableData,
@@ -46,6 +57,8 @@ function generateTable() {
     columns: tableHeader,
   });
 }
+
+// gerenate and display the table once page is mounted
 onMounted(() => {
   generateTable();
 });
