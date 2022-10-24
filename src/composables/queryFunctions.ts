@@ -1,22 +1,30 @@
 import { storeToRefs } from "pinia";
 import { DataStore } from "../stores/DataStore/DataStore";
 import { QueryStore } from "../stores/QueryStore/QueryStore";
-import { EditorStore } from "../stores/EditorStore/EditorStore";
 import { ResultStore } from "../stores/ResultStore/ResultStore";
 
+/**
+ * returns result of array is displayed in results page
+ * @returns the array of object
+ */
 export function generateResult() {
   //   console.log("HERE MIGHT STUCK FOR BIG DATA (100,000 Rows does work)- IMPROVE LOGIC  - ");
+  selectResult();
+  sortResult();
+}
+
+/**
+ * @returns array containing only selected rows
+ */
+export function selectResult() {
   const dataStore = DataStore();
   const queryStore = QueryStore();
-  const editorStore = EditorStore();
   const resultStore = ResultStore();
   const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
   const { queryList } = storeToRefs(queryStore);
-  const { editorCode } = storeToRefs(editorStore);
   const { resultData } = storeToRefs(resultStore);
   if (selectedDatasetIndex.value == -1) return;
   resultData.value = [];
-  let len = datatableList.value[selectedDatasetIndex.value].jsondata.length;
   const datacolumns = Object.keys(
     datatableList.value[selectedDatasetIndex.value].jsondata[0]
   );
@@ -30,7 +38,6 @@ export function generateResult() {
       }
     }
   }
-  console.log(columns);
 
   datatableList.value[selectedDatasetIndex.value].jsondata.forEach((ele) => {
     let resObj = {};
@@ -40,5 +47,47 @@ export function generateResult() {
     console.log(resObj);
     resultData.value.push(resObj);
   });
-  console.log(resultData.value);
+}
+
+/**
+ * @returns sorted array of the selected rows
+ */
+export function sortResult() {
+  const dataStore = DataStore();
+  const queryStore = QueryStore();
+  const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+  const { queryList } = storeToRefs(queryStore);
+
+  // logic ompares in order as string
+  // Todo: Modification
+  // Seperate Numberic and Non Numeric and convert to numeric & sort accordingly
+  for (let i = 0; i < queryList.value[2].orderQueryList?.length; i++) {
+    let nm = queryList.value[2].orderQueryList[i].name;
+    let or = queryList.value[2].orderQueryList[i].orderRule;
+    if (i > 0) {
+      datatableList.value[selectedDatasetIndex.value].jsondata.sort((a, b) => {
+        if (a[nm] != b[nm]) return 0;
+        if (or == "ASC") {
+          if (a[nm] > b[nm]) return 1;
+          else return -1;
+        }
+        if (or == "DESC") {
+          if (a[nm] < b[nm]) return 1;
+          else return -1;
+        }
+      });
+    }
+    if (i == 0) {
+      datatableList.value[selectedDatasetIndex.value].jsondata.sort((a, b) => {
+        if (or == "ASC") {
+          if (a[nm] > b[nm]) return 1;
+          else return -1;
+        }
+        if (or == "DESC") {
+          if (a[nm] < b[nm]) return 1;
+          else return -1;
+        }
+      });
+    }
+  }
 }
