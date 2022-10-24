@@ -12,24 +12,21 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { storeToRefs } from "pinia";
 import { sql } from "@codemirror/lang-sql";
 import CodeMirror from "vue-codemirror6";
 
-import { storeToRefs } from "pinia";
+// Initializing EditorStore
 import { EditorStore } from "../../../stores/EditorStore/EditorStore";
-import { QueryStore } from "../../../stores/QueryStore/QueryStore";
 const editorStore = EditorStore();
 const { editorCode } = storeToRefs(editorStore);
-const queryStore = QueryStore();
-const { queryList } = storeToRefs(queryStore);
 
 const lang = sql();
 const props = defineProps({
+  /** We take in as prop for the editor be be editable or read-olny */
   readOnly: {
     type: Boolean,
     default: true,
   },
 });
-console.log("editor", props.readOnly);
 </script>

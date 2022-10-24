@@ -24,11 +24,13 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { sidebarUpdate } from "../../../composables/Sidebar";
+import Button from "../../Utils/Button.vue";
+
+// initializing DataStore
 import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
-import { sidebarUpdate } from "../../../composables/Sidebar";
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-import Button from "../../Utils/Button.vue";
 </script>
 
 <style scoped>

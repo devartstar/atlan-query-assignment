@@ -61,18 +61,29 @@
 </template>
 
 <script lang="ts" setup>
-import Editor from "../EditorPage/Editor.vue";
 import { storeToRefs } from "pinia";
-import { DataStore } from "../../../stores/DataStore/DataStore";
-import { QueryStore } from "../../../stores/QueryStore/QueryStore";
+import { ref } from "@vue/reactivity";
+import Editor from "../EditorPage/Editor.vue";
+import Button from "../../Utils/Button.vue";
+
+/** helper functions from composables */
 import { sidebarUpdate } from "../../../composables/Sidebar";
 import { generateResult } from "../../../composables/queryFunctions";
-import { ref } from "@vue/reactivity";
-import Button from "../../Utils/Button.vue";
+
+// initializing DataStore
+import { DataStore } from "../../../stores/DataStore/DataStore";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+
+// Initializing QueryStore
+import { QueryStore } from "../../../stores/QueryStore/QueryStore";
 const queryStore = QueryStore();
 const { queryList } = storeToRefs(queryStore);
+
+/**
+ * to generateResult from the queries selected 
+ * update sidebar to Results page
+ */
 function seeResult() {
   generateResult();
   sidebarUpdate(3);

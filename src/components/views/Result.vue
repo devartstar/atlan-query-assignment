@@ -77,29 +77,39 @@
         v-if="!editorDisplay && selectedDatasetIndex != -1"
         class="lg:w-full mx-4 lg:mx-6 w-full h-96 lg lg:h-[36rem]"
       >
-        <ShowTable :tableData="getData()"/>
+        <ShowTable :tableData="getData()" />
       </div>
     </div>
   </template>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { storeToRefs } from "pinia";
-import { DataStore } from "../../stores/DataStore/DataStore";
-import { ResultStore } from "../../stores/ResultStore/ResultStore";
+import { ref } from "vue";
 import { sidebarUpdate } from "../../composables/Sidebar";
-const dataStore = DataStore();
-const resultStore = ResultStore();
-const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
-const { resultData } = storeToRefs(resultStore);
 import Editor from "./EditorPage/Editor.vue";
 import ShowTable from "./DataTables/ShowTable.vue";
 import Button from "../Utils/Button.vue";
+
+// Initializing DataStore
+import { DataStore } from "../../stores/DataStore/DataStore";
+const dataStore = DataStore();
+const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+
+// Initializing ResultStore
+import { ResultStore } from "../../stores/ResultStore/ResultStore";
+const resultStore = ResultStore();
+const { resultData } = storeToRefs(resultStore);
+
+/** Toggle Editor functionality */
 const editorDisplay = ref(false);
 
+/**
+ * Depending upon it result data is None
+ * if No then displaying result data
+ * if Yes then displaying entire data
+ */
 function getData() {
-  console.log("getData");
   if (resultData.value.length == 0) {
     return datatableList.value[selectedDatasetIndex.value].jsondata;
   } else {

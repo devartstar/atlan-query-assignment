@@ -36,9 +36,7 @@ import { onMounted } from "@vue/runtime-core";
 
 onMounted(() => {
   var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
-  console.log(themeToggleDarkIcon);
   var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
-  console.log(themeToggleLightIcon);
 
   if (
     localStorage.getItem("color-theme") === "dark" ||

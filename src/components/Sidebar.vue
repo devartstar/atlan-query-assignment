@@ -65,14 +65,17 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
 import { Icon } from "@iconify/vue";
 import { onMounted } from "vue";
 import { sidebarToggle, sidebarUpdate } from "../composables/Sidebar";
-import { storeToRefs } from "pinia";
+
+// initializing DataStore
 import { DataStore } from "../stores/DataStore/DataStore";
 const dataStore = DataStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
 
+/** List of Options to display in Sidebar */
 const optionList = [
   {
     name: "Home",
@@ -96,12 +99,20 @@ const optionList = [
   },
 ];
 
+/** On page mounted
+ * 1. select the resizer element (thin line beside sidebar) to select it and dragging would resize the sidebar
+ * 2. select the sidebar and plly the resizer on it
+ */
 onMounted(() => {
   const resizerEle = document.querySelector(".resizer");
   const sidebarEle = document.querySelector(".flex-sidebar");
   initResizerFn(resizerEle, sidebarEle);
 });
 
+/**
+ * redirect to the link depending upon the option in sidebar selected
+ * @param index index to the sidebar element selected
+ */
 function getLink(index) {
   // conditionally redirect to query route link depending upon the dataset selected or not
   if (index == 2 && selectedDatasetIndex.value != -1) {
@@ -111,6 +122,11 @@ function getLink(index) {
   }
 }
 
+/**
+ * logic to resize the sidebar
+ * @param resizer element on dragging will resize
+ * @param sidebar element to resize
+ */
 function initResizerFn(resizer, sidebar) {
   // track current mouse position in x var
   var x, w;

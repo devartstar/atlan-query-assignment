@@ -26,20 +26,33 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { onMounted, ref } from "vue";
+
+// initializing DataStore
 import { DataStore } from "../../../../stores/DataStore/DataStore";
-import { QueryStore } from "../../../../stores/QueryStore/QueryStore";
-import { EditorStore } from "../../../../stores/EditorStore/EditorStore";
-import { generateResult } from "../../../../composables/queryFunctions";
 const dataStore = DataStore();
-const queryStore = QueryStore();
-const editorStore = EditorStore();
 const { datatableList, selectedDatasetIndex } = storeToRefs(dataStore);
+
+// initializing QueryStore
+import { QueryStore } from "../../../../stores/QueryStore/QueryStore";
+const queryStore = QueryStore();
 const { queryList } = storeToRefs(queryStore);
+
+// initializing EditorStore
+import { EditorStore } from "../../../../stores/EditorStore/EditorStore";
+const editorStore = EditorStore();
 const { editorCode } = storeToRefs(editorStore);
+
+/**
+ * it stores the array of keys (the columns)
+ */
 const datacolumns = Object.keys(
   datatableList.value[selectedDatasetIndex.value].jsondata[0]
 );
 
+/**
+ * array of object
+ * the list of column names along with boolean representing selected or not
+ */
 const columnList = [
   {
     columnName: "*",
@@ -47,6 +60,7 @@ const columnList = [
   },
 ];
 const len = datacolumns.length;
+/** creating the array of object */
 for (let i = 1; i <= len; i++) {
   columnList.push({
     columnName: datacolumns[i - 1],
@@ -54,6 +68,10 @@ for (let i = 1; i <= len; i++) {
   });
 }
 
+/**
+ * updating the selections from the previous selections
+ * so its stores on switing tabs in sidebar
+ */
 onMounted(() => {
   const comulnOptions = document.querySelectorAll(".selectform");
   [...comulnOptions].forEach(function (ele, ind) {
@@ -61,17 +79,23 @@ onMounted(() => {
   });
 });
 
+/**
+ * updat the data in columnList depending on the checkbox clicked
+ * @param index (the index to the column selected)
+ */
 function updateSelection(index) {
   const comulnOptions = document.querySelectorAll(".selectform");
   queryList.value[0].checkedList[index] =
     !queryList.value[0].checkedList[index];
   columnList[index].selected = queryList.value[0].checkedList[index];
 
+  /** if any other column is selected unselect * */
   if (index != 0) {
     queryList.value[0].checkedList[0] = false;
     comulnOptions[0].checked = false;
     columnList[0].selected = queryList.value[0].checkedList[0];
   }
+  /** if * selected unselct all other columns */
   if (index == 0) {
     for (let i = 1; i < comulnOptions.length; i++) {
       queryList.value[0].checkedList[i] = false;
@@ -79,11 +103,13 @@ function updateSelection(index) {
       columnList[i].selected = queryList.value[0].checkedList[i];
     }
   }
-  console.log(columnList);
   // Update the editor
   updateEditorCode();
 }
 
+/**
+ * update the editor code depending on the selections
+ */
 function updateEditorCode() {
   let appendCode = `SELECT `;
   for (let i = 0; i < columnList.length; i++) {
@@ -103,7 +129,5 @@ function updateEditorCode() {
       editorCode.value += `${queryList.value[i].editorCode} \n`;
     }
   }
-  console.log(editorCode.value);
-  // generateResult()
 }
 </script>

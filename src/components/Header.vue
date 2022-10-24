@@ -35,14 +35,7 @@
 import ThemeToggleBtn from "./ThemeToggleBtn.vue";
 import { ref } from "@vue/reactivity";
 
-const menu = ref(false);
-
-function menuToggle() {
-  menu.value = !menu.value;
-}
-function menuToggleBlur() {
-  menu.value = false;
-}
+/** toggle sidebar in smaller */
 function sidebarToggle() {
   document.querySelector(".flex-sidebar").classList.remove("hidden");
 }
