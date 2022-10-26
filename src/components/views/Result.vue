@@ -33,8 +33,6 @@
         x-data="{ selected: true }"
         class="w-full rounded bg-white h-auto m-auto shadow flex flex-col p-8 pt-6 rounded-xl"
       >
-        <h1 class="text-indigo-600 font-bold">Toggle Editor</h1>
-
         <div
           class="relative w-full mt-4 rounded-md border h-10 p-1 bg-gray-200"
         >
@@ -43,13 +41,13 @@
               @click="editorDisplay = !editorDisplay"
               class="w-full flex justify-center text-gray-400 cursor-pointer"
             >
-              <button>Show</button>
+              <button class="text-indigo-600 font-bold">Show Code</button>
             </div>
             <div
               @click="editorDisplay = !editorDisplay"
               class="w-full flex justify-center text-gray-400 cursor-pointer"
             >
-              <button>Hide</button>
+              <button class="text-indigo-600 font-bold">Show Table</button>
             </div>
           </div>
 
@@ -63,7 +61,7 @@
         </div>
       </div>
     </div>
-    <div class="flex justify-center m-3 container bg-white">
+    <div class="flex justify-center m-3 container">
       <div
         v-if="editorDisplay"
         class="lg:w-1/2 mx-4 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
@@ -75,9 +73,16 @@
       </div>
       <div
         v-if="!editorDisplay && selectedDatasetIndex != -1"
-        class="lg:w-full mx-4 lg:mx-6 w-full h-96 lg lg:h-[36rem]"
+        class="lg:w-full mx-4 lg:mx-6 w-full h-96 lg lg:h-[36rem] flex flex-col"
       >
         <ShowTable :tableData="getData()" />
+        <div class="mx-auto">
+          <Button
+            button-text="Export Result"
+            @click="downloadCSV"
+            class="mt-10 w-40 mx-auto"
+          />
+        </div>
       </div>
     </div>
   </template>
@@ -115,5 +120,29 @@ function getData() {
   } else {
     return resultData.value;
   }
+}
+
+/**
+ * to generate the result in csv form
+ * download the result data in csv file
+ */
+function downloadCSV() {
+  const data = getData();
+  var csvdata = Papa.unparse(data);
+  var element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:text/csv;charset=utf-8," + encodeURIComponent(csvdata)
+  );
+  let filename = `${
+    datatableList.value[selectedDatasetIndex.value].title
+  } - result`;
+  element.setAttribute("download", filename);
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+  document.body.removeChild(element);
 }
 </script>

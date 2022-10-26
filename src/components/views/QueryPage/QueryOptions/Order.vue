@@ -97,15 +97,12 @@ function updateLists() {
     // return those elements not in the namesToDeleteSet
     return !tempSet.has(ele);
   });
-  console.log(toAddColumn.value);
 }
 
 function removeEle(idx) {
   const ele = queryList.value[2].orderQueryList[idx];
   queryList.value[2].orderQueryList.splice(idx, 1);
   toAddColumn.value.push(ele.name);
-  console.log(toAddColumn.value);
-  console.log(queryList.value[2].orderQueryList);
   updateEditorCode();
 }
 function addEle(idx) {
@@ -116,17 +113,12 @@ function addEle(idx) {
   });
   toAddColumn.value.splice(idx, 1);
   updateLists();
-  console.log(toAddColumn.value);
-  console.log(queryList.value[2].orderQueryList);
   updateEditorCode();
 }
 
 function updateEditorCode() {
-  console.log("HELLO FROM UPDATE CODE EDITOR");
-  console.log(queryList.value[2].orderQueryList);
   let ascendingString = ``;
   let descendingString = ``;
-  console.log(queryList.value[2].orderQueryList);
   let len = queryList.value[2].orderQueryList.length;
   for (let i = 0; i < len; i++) {
     if (queryList.value[2].orderQueryList[i].orderRule == "ASC") {
@@ -135,9 +127,6 @@ function updateEditorCode() {
       descendingString += `${queryList.value[2].orderQueryList[i].name}, `;
     }
   }
-  console.log(ascendingString);
-  console.log(descendingString);
-  console.log(editorCode.value);
   let appendCode = ``;
   if (ascendingString.length > 0 || descendingString.length > 0) {
     appendCode += `WHERE `;

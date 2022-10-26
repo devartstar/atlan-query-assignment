@@ -60,10 +60,6 @@ const valueArr = Object.values(
 const datacolumns = Object.keys(
   datatableList.value[selectedDatasetIndex.value].jsondata[0]
 );
-console.log(valueArr);
-for (let i = 0; i < valueArr.length; i++) {
-  console.log();
-}
 
 function containsNumbers(str) {
   return /^[0-9]+./.test(str);
@@ -85,8 +81,6 @@ for (let i = 0; i < len; i++) {
     });
   }
 }
-console.log(numericColList);
-console.log(stringColList);
 
 function updateNumericSelection(index) {
   // some numerical queries like `BETWEEN` & '== != < > >= <=' logics

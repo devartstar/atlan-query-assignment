@@ -44,7 +44,6 @@ export function selectResult() {
     columns.forEach((column) => {
       resObj[column] = ele[column];
     });
-    console.log(resObj);
     resultData.value.push(resObj);
   });
 }

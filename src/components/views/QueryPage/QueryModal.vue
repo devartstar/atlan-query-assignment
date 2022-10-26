@@ -1,6 +1,6 @@
 <template>
   <h1
-    class="flex items-center justify-center text-5xl font-extrabold dark:text-white mt-5"
+    class="flex items-center justify-center text-4xl font-extrabold dark:text-white mt-5"
   >
     <span
       class="bg-blue-100 text-blue-800 text-2xl font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-2"
@@ -38,8 +38,8 @@
     </li>
   </ul>
 
-  <section class="bg-white dark:bg-gray-900">
-    <div class="container px-6 py-10 mx-auto">
+  <section>
+    <div class="container sm:px-1 lg:px-6 py-10 mx-auto">
       <div class="lg:-mx-6 lg:flex lg:items-center">
         <div
           class="lg:w-1/2 mx-4 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
@@ -81,7 +81,7 @@ const queryStore = QueryStore();
 const { queryList } = storeToRefs(queryStore);
 
 /**
- * to generateResult from the queries selected 
+ * to generateResult from the queries selected
  * update sidebar to Results page
  */
 function seeResult() {

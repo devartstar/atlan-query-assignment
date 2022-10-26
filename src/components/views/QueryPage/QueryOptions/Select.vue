@@ -121,7 +121,6 @@ function updateEditorCode() {
     datatableList.value[selectedDatasetIndex.value].title
   }`;
   queryList.value[0].editorCode = appendCode;
-  console.log(queryList.value[0].editorCode);
 
   editorCode.value = ``;
   for (let i = 0; i < queryList.value.length; i++) {

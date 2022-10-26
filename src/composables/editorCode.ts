@@ -21,7 +21,6 @@ export function refreshEditorCode() {
   queryList.value[1].numericCheckedList = new Array(100).fill(false); // for WHERE queries
   queryList.value[1].stringCheckedList = new Array(100).fill(false); // for WHERE queries
   queryList.value[2].orderQueryList = [];
-  console.log(queryList.value);
   for (let i = 0; i < queryList.value.length; i++) {
     queryList.value[i].editorCode = ``;
   }

@@ -142,7 +142,6 @@ function initResizerFn(resizer, sidebar) {
   }
 
   function mousemoveHandler(e) {
-    console.log(e);
     var dx = e.clientX - x;
 
     var cw = w + dx; // complete width
@@ -150,16 +149,13 @@ function initResizerFn(resizer, sidebar) {
     if (cw > 100 && cw < 500) {
       sidebar.style.width = `${cw}px`;
     }
-    console.log(cw);
     const arrowTransitionEle = document.querySelectorAll(".hideEle");
     if (cw < 200) {
       [...arrowTransitionEle].forEach(function (ele) {
-        console.log(ele.style.visibility);
         ele.style.visibility = "hidden";
       });
     } else {
       [...arrowTransitionEle].forEach(function (ele) {
-        console.log(ele.style.visibility);
         ele.style.visibility = "visible";
       });
     }
