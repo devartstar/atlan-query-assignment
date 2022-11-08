@@ -1,6 +1,9 @@
 <template>
   <div id="exampletable" class="disptable"></div>
-  <Pagination @change-size="updateSize($event)" />
+  <Pagination
+    @change-size="updateSize($event)"
+    :table-size="props.tableData.length"
+  />
 </template>
 
 <script setup lang="ts">
