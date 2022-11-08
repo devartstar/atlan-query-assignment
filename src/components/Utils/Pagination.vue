@@ -36,7 +36,10 @@ function updateSelection(size) {
   emit("change-size", size);
   const page = document.querySelectorAll(".pages");
   [...page].forEach(function (ele) {
+    if (parseInt(ele.innerHTML) > props.tableSize * 2) return;
+
     if (parseInt(ele.innerHTML) == size) {
+      if (size > props.tableSize * 2) return;
       ele.style.backgroundColor = "#4F46E5";
       ele.style.color = "white";
     } else {
