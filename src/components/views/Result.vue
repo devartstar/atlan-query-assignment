@@ -61,14 +61,17 @@
         </div>
       </div>
     </div>
+    <p
+      v-if="editorDisplay"
+      class="my-5 text-indigo-600 text-center text-lg font-bold"
+    >
+      Modify Query Code and Play Around !!!
+    </p>
     <div class="flex justify-center m-3 container">
       <div
         v-if="editorDisplay"
         class="lg:w-1/2 mx-4 lg:mx-6 w-full h-96 rounded-lg lg:h-[36rem] border-2 border-indigo-600"
       >
-        <p class="mb-5 text-indigo-600 text-center text-lg font-bold">
-          Modify Query Code and Play Around !!!
-        </p>
         <Editor :readOnly="false" />
       </div>
       <div

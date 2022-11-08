@@ -5,7 +5,7 @@
     :dark="true"
     :lang="lang"
     :tab="true"
-    class="max-h-96 text-lg"
+    class="text-lg h-full [&>*]:h-full"
     :wrap="true"
     :readonly="readOnly"
   />
@@ -30,3 +30,9 @@ const props = defineProps({
   },
 });
 </script>
+
+<style scoped>
+.cm-editor {
+  height: 100%;
+}
+</style>
