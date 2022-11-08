@@ -154,6 +154,11 @@ function updateTableList() {
     download: true,
     header: true,
     skipEmptyLines: true,
+    step: function (row) {
+      // some update for each row
+      // for big tables renser only some rows as preview
+      console.log("Row:", row.data);
+    },
     complete: function (results) {
       inputData.value.jsondata = results.data;
       datatableList.value.push(inputData.value);

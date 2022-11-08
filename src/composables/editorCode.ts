@@ -26,3 +26,6 @@ export function refreshEditorCode() {
   }
   resultData.value = [];
 }
+
+
+// function to detect the code in result page and update the result data
